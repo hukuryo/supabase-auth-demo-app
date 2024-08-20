@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import ModalCore from "./modalCore";
 import { ModalType } from "./modal/modalType";
+
 const Navigation = ({ session }: { session: Session | null }) => {
   const pathname = usePathname();
   const router = useRouter();
@@ -20,14 +21,17 @@ const Navigation = ({ session }: { session: Session | null }) => {
             </Link>
           </div>
           {session ? (
-            <div>
-              <Link
-                className="text-gray-600 hover:text-blue-600"
-                href="/profile"
-              >
-                Profile
-              </Link>
-            </div>
+            <>
+              <div>
+                <Link
+                  className="text-gray-600 hover:text-blue-600"
+                  href="/profile"
+                >
+                  Profile
+                </Link>
+              </div>
+              <div>{session.user.email}</div>
+            </>
           ) : (
             <>
               <div>
